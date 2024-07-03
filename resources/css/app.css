@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    /* border: 1px solid #000; */
+    font-family: "DM Sans", sans-serif;
+}
+.option-svg-post {
+    transform: rotate(90deg);
+}
+
+.options {
+    display: none;
+}
+
+.option-svg-post.active ~ .options {
+    display: block;
+}
+
+.delete-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
