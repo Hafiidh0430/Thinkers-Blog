@@ -17,4 +17,9 @@ class User extends Model implements AuthenticatableContract
     protected $table = 'user';
     protected $primaryKey = 'id';
     protected $fillable = ['username', 'password'];
+
+    // public function userPost()
+    // {
+    //     return $this->hasMany(Post::class, ['id_user', 'id']);
+    // }
 }

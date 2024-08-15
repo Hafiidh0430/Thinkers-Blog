@@ -36,11 +36,10 @@ class PostController extends Controller
             'description' => 'required|string',
         ]);
 
-        
         $data = [
             'title' => $request->title,
             'description' => $request->description,
-            'user_id' => auth()->user()->id,
+            'username' => auth()->user()->username,
         ];
 
         $post = DB::table('post')->insert($data);
@@ -98,10 +97,6 @@ class PostController extends Controller
         }
     }
 
-    // public function delete ($id) {
-    //     $post = DB::table('post')->where('id', $id)->first();
-    //     return view('pages.delete', ['post' => $post]);
-    // }
     public function deleteStore($id)
     {
         $post = DB::table('post')->where('id', $id)->delete();

@@ -25,7 +25,7 @@
                     <div class="creator-with-option-post flex items-center justify-between">
                         <div class="creator flex gap-2 items-center">
                             <div class="pp w-10 h-10 rounded-full bg-slate-400"></div>
-                            <p class="name font-bold text-[1rem]">@ {{$tweet->user_id}}</p>
+                            <p class="name font-bold text-[1rem]">@ {{$tweet->username}}</p>
                         </div>
                         <div class="option-post relative">
                             <svg class="option-svg-post" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"

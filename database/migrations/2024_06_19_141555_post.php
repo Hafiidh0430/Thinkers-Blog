@@ -10,12 +10,12 @@ return new class extends Migration
     {
         Schema::create('post', function(Blueprint $table) {
             $table->id('id');
-            $table->unsignedBigInteger('user_id');
+            $table->string('username');
             $table->text('title');
             $table->text('description');
             $table->timestamp('create_at')->useCurrent()->useCurrentOnUpdate();
 
-            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade')->onUpdate('cascade');
           });
     }
     public function down(): void

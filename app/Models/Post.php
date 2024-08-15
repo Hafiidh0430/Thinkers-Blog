@@ -10,10 +10,10 @@ class Post extends Model
     use HasFactory;
     protected $table = 'post';
     protected $primaryKey = 'id';
-    protected $fillable = ['title', 'description'];
+    protected $fillable = ['title', 'description', 'username'];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class, ['id_user', 'id']);
-    }
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class, ['id_user', 'id']);
+    // }
 }

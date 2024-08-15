@@ -67,7 +67,7 @@
 
                         <div class="creator flex gap-2 items-center">
                             <div class="pp w-10 h-10 rounded-full bg-slate-400"></div>
-                            <p class="name font-bold text-[1rem]">@ {{ $post->user_id }}</p>
+                            <p class="name font-bold text-[1rem]">@ {{ $post->username }}</p>
                         </div>
                     </div>
                     <div class="flex flex-col gap-2">

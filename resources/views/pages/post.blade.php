@@ -10,7 +10,7 @@
 @endsection
 @section('content2')
     <div class="user-profile mt-12 flex gap-4 items-center">
-        <h4 class="user font-semibold">Created by @ {{$post->user_id}}</h4>
+        <h4 class="user font-semibold">Created by @ {{$post->username}}</h4>
         <p>|</p>
         <p class="date">Today, 9:30 PM</p>
     </div>
