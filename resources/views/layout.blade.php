@@ -27,12 +27,16 @@
 
                     </ul>
                     @if (auth()->check())
-                    <div class="user-profile flex gap-4 items-center">
-                        <div class="pp w-10 h-10 bg-slate-100 rounded-full"></div>
-                        <h4 class="user font-semibold">@ {{auth()->user()->username}}</h4>
+                    <div class="flex gap-8 items-center">
+                        <div class="user-profile flex gap-4 items-center">
+                            <div class="pp w-10 h-10 bg-slate-100 rounded-full"></div>
+                            <h4 class="user font-semibold">@ {{auth()->user()->username}}</h4>
+                        </div>
+                        <a href="{{ route('logout') }}" class="px-5 py-2 rounded-lg bg-red-200 text-red-600">Sign Out</a>
+
                     </div>
                     @else
-                        <a href="{{ route('login') }}" class="px-6 py-2 rounded-lg border border-black">Login</a>
+                        <a href="{{ route('login') }}" class="px-5 py-2 rounded-lg border border-black">Login</a>
                     @endif
                 </nav>
             </header>

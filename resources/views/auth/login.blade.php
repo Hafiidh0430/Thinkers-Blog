@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,17 +32,21 @@
                             @csrf
                             <div class="email flex flex-col gap-2">
                                 <label for="username" class="username_label ">Username</label>
-                                <input type="text" placeholder="username" id="username" name="username"
-                                    class="username px-4 py-3 bg-slate-100 border-2 border-slate-200 rounded-[8px] outline-none">
+                                <input required type="text" placeholder="username" id="username" name="username"
+                                    class="username px-4 py-2  bg-slate-100 border-2 border-slate-200 rounded-[8px] outline-none">
                             </div>
                             <div class="password flex flex-col gap-2">
                                 <label for="password" class="password_label">Password</label>
-                                <input type="password" placeholder="password" id="email" name="password"
-                                    class="password  bg-slate-100 px-4 py-3 border-2 border-slate-200 rounded-[8px] outline-none">
+                                <input required type="password" placeholder="password" id="email" name="password"
+                                    class="password  bg-slate-100 px-4 py-2 border-2 border-slate-200 rounded-[8px] outline-none">
                             </div>
-                            <button type="submit" name="submit"
-                                class="login_submit w-full bg-zinc-950 text-white py-4 rounded-[8px]">Sign In to
-                                account</button>
+                            <div class="flex flex-col items-center gap-4">
+                                <button type="submit" name="submit"
+                                    class="login_submit w-full bg-zinc-950 text-white py-3 text-sm rounded-[8px]">Sign In to
+                                    account</button>
+                                <p>Haven't an account yet? <a class="underline font-semibold"
+                                        href="{{ route('register') }}">Register here.</a></p>
+                            </div>
                         </form>
 
                     </div>
