@@ -7,7 +7,7 @@
         action="{{ route('pages.updateStore', ['id' => $old->id]) }}">
         @method('PATCH')
         @csrf
-        <h4 class="font-bold text-2xl">Update your tweet.</h4>
+        <h4 class="font-bold text-2xl text-center">Update your tweet.</h4>
         <input value="{{ $old->title }}" class="px-6 py-2 bg-transparent rounded-lg outline-none border {{ $errors->has('title') ? 'border-red-600' : ' border-slate-300' }}"
             type="text" name="title" placeholder="title">
         @error('title')

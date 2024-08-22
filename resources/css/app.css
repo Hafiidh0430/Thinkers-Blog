@@ -25,3 +25,15 @@
     transform: translate(-50%, -50%);
 }
 
+.hamburger-menu.active span:nth-child(1) {
+    position: absolute;
+    transform: rotate(45deg);
+}
+.hamburger-menu.active span:nth-child(2) {
+    transform: rotate(-45deg);
+}
+
+.sub-nav-responsive.active {
+    display: flex;
+}
+

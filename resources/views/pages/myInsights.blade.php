@@ -87,7 +87,7 @@
 
                     <div class="flex flex-col gap-2">
                         <h4 class="title text-xl text-justify font-semibold">{{ $tweet->title }}</h4>
-                        <p class="leading-6 text-lg text-slate-600 text-justify">{{ $tweet->description }}</p>
+                        <p class="leading-6 text-lg text-slate-600 text-justify">{{ Str::substr($tweet->description, 0, 250) }}</p>
                     </div>
                     <p class="date">{{ $tweet->create_at }}</p>
                 </div>

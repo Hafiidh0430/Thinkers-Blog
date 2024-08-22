@@ -87,7 +87,6 @@ class PostController extends Controller
         $data = [
             'title' => $request->title,
             'description' => $request->description,
-            'user_id' => auth()->user()->id,
         ];
 
         $post = DB::table('post')->where('id', $id)->update($data);

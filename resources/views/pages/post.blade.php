@@ -3,8 +3,8 @@
 
 
 @section('content1')
-    <div class="mt-12 flex flex-col gap-6 items-center container-post">
-        <h1 class="text-5xl text-center">{{ $post->title }}</h1>
+    <div class="mt-12 flex flex-col max-sm:gap-4 gap-6 w-full items-start container-post">
+        <h1 class="text-5xl max-md:text-3xl max-sm:text-2xl text-justify">{{ $post->title }}</h1>
         <p class="text-xl text-slate-600">{{ $post->description }}</p>
     </div>
 @endsection
