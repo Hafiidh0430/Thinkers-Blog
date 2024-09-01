@@ -9,13 +9,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('post', function(Blueprint $table) {
-            $table->id('id');
-            $table->string('username');
-            $table->text('title');
-            $table->text('description');
-            $table->timestamp('create_at')->useCurrent()->useCurrentOnUpdate();
-
-            // $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade')->onUpdate('cascade');
+            $table->id('id')->primary();
+            $table->string('username')->nullable(false);
+            $table->string('image')->nullable(true);
+            $table->text('title')->nullable(false);
+            $table->text('description')->nullable(false);
+            $table->date('create_at')->default(now());
           });
     }
     public function down(): void

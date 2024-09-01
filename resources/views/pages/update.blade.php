@@ -3,12 +3,14 @@
 
 
 @section('content1')
-    <form class="flex gap-4 flex-col w-[35%] mt-10" method="POST"
+    <form class="flex gap-4 flex-col w-[35%] mt-10" enctype="multipart/form-data" method="POST"
         action="{{ route('pages.updateStore', ['id' => $old->id]) }}">
         @method('PATCH')
         @csrf
         <h4 class="font-bold text-2xl text-center">Update your tweet.</h4>
-        <input value="{{ $old->title }}" class="px-6 py-2 bg-transparent rounded-lg outline-none border {{ $errors->has('title') ? 'border-red-600' : ' border-slate-300' }}"
+        <input type="file" name="image" id="">
+        <input value="{{ $old->title }}"
+            class="px-4 py-2 bg-transparent rounded-lg outline-none border {{ $errors->has('title') ? 'border-red-600' : ' border-slate-300' }}"
             type="text" name="title" placeholder="title">
         @error('title')
             <div class="error flex items-center text-red-600  gap-2">
@@ -16,7 +18,8 @@
                 <p class="text-md font-medium">Update title can't be empty!</p>
             </div>
         @enderror
-        <textarea class="px-6 py-2 resize-none h-[30vh] bg-transparent rounded-lg outline-none border {{ $errors->has('description') ? 'border-red-600' : ' border-slate-300' }}"
+        <textarea
+            class="px-4 py-2 resize-none h-[30vh] bg-transparent rounded-lg outline-none border {{ $errors->has('description') ? 'border-red-600' : ' border-slate-300' }}"
             type="text" name="description" placeholder="description">{{ $old->description }}</textarea>
         @error('description')
             <div class="error flex items-center text-red-600  gap-2">

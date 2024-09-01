@@ -3,9 +3,11 @@
 
 
 @section('content1')
-    <form class="flex gap-4 flex-col max-sm:w-full w-[50%] mt-16" method="POST" action="{{ route('pages.addStore') }}">
+    <form class="flex gap-4 flex-col max-sm:w-full w-[50%] mt-16" enctype="multipart/form-data" method="POST"
+        action="{{ route('pages.addStore') }}">
         @csrf
         <h4 class="font-bold max-sm:text-xl text-center text-2xl">Create your Tweet.</h4>
+        <input type="file" name="image" id="">
         <input
             class="px-4 max-sm:px-4 max-sm:text-sm max-sm:py-2 max-sm:text {{ $errors->has('title') ? 'border-red-600' : ' border-slate-300' }} py-2 bg-transparent rounded-lg outline-none border"
             type="text" name="title" value="{{ old('title') }}" placeholder="title">
@@ -25,7 +27,8 @@
             </div>
         @enderror
         <div class="buttons flex flex-col gap-2">
-            <button class="text-white font-medium max-sm:text-sm max-sm:py-2 btn-submit-create bg-gray-950 py-3 rounded-lg" type="submit">Create
+            <button class="text-white font-medium max-sm:text-sm max-sm:py-2 btn-submit-create bg-gray-950 py-3 rounded-lg"
+                type="submit">Create
                 tweet</button>
             <a href="{{ route('pages.index') }}"
                 class="btn-submit-create font-medium border max-sm:text-sm max-sm:py-2 text-gray-950 text-center border-gray-950 py-3 rounded-lg"
