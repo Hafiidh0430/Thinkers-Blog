@@ -35,16 +35,4 @@
                 type="submit">No, Cancel</a>
         </div>
     </form>
-    <script>
-        const updateBtn = document.querySelector('.btn-submit-update');
-        updateBtn.addEventListener('submit', (event) => {
-            event.preventDefault();
-            updateBtn.innerHTML = "Updating post..."
-            updateBtn.disabled = true;
-            setTimeout(() => {
-                updateBtn.disabled = false;
-                updateBtn.innerHTML = "Update post"
-            }, 2000);
-        })
-    </script>
 @endsection

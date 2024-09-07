@@ -4,7 +4,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ResgisterController;
 use Illuminate\Support\Facades\Route;
-use Symfony\Component\HttpKernel\DependencyInjection\RegisterControllerArgumentLocatorsPass;
 
 Route::prefix('/')->middleware('auth')->group(function () { 
     Route::get('/',[PostController::class, 'index'])->name('pages.index');

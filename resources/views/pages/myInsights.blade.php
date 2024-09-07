@@ -4,7 +4,7 @@
 
 <div class="w-full h-full bg-modal absolute bg-gray-400 opacity-15 z-10"></div>
 @section('content1')
-<div class="{{ $tweets->count() == 0 ? 'mt-8' : 'mt-20  grid w-full grid-cols-2 gap-8' }} 
+    <div class="{{ $tweets->count() == 0 ? 'mt-8' : 'mt-20  grid w-full grid-cols-2 gap-8' }} 
     px-12">
         @if ($tweets->count() == 0)
             <div class="empty-state flex gap-4 items-center flex-col justify-center">
@@ -25,7 +25,7 @@
                     <div class="creator-with-option-post flex items-center justify-between">
                         <div class="creator flex gap-2 items-center">
                             <div class="pp w-10 h-10 rounded-full bg-slate-400"></div>
-                            <p class="name font-bold text-[1rem]">@ {{$tweet->username}}</p>
+                            <p class="name font-bold text-[1rem]">@ {{ $tweet->username }}</p>
                         </div>
                         <div class="option-post relative">
                             <svg class="option-svg-post" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
@@ -87,13 +87,13 @@
 
                     <div class="flex flex-col gap-2">
                         <h4 class="title text-xl text-justify font-semibold">{{ $tweet->title }}</h4>
-                        <p class="leading-6 text-lg text-slate-600 text-justify">{{ Str::substr($tweet->description, 0, 250) }}</p>
+                        <p class="leading-6 text-lg text-slate-600 text-justify">
+                            {{ Str::substr($tweet->description, 0, 250) }}</p>
                     </div>
                     <p class="date">{{ $tweet->create_at }}</p>
                 </div>
             @endforeach
         @endif
-
     </div>
     <script>
         const optionPost = document.querySelectorAll('.option-svg-post');

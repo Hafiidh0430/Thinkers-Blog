@@ -14,16 +14,15 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $time = Carbon::now();
         if ($search) {
             $post = DB::table('post')->whereRaw("title LIKE? OR description LIKE?", ["%{$search}%", "%{$search}%"])->get();
         } else {
-            $post = DB::table('post')->get();
+            $post = DB::table('post')->whereNotNull('image')->get();
         }
-       
-
-        return view('pages.index', ['posts' => $post, 'search' => $search, 'time' => $time]);
+        $article = DB::table('post')->where('image', null)->get();
+        return view('pages.index', ['posts' => $post, 'search' => $search, 'article' => $article]);
     }
+
     public function add()
     {
         return view('pages.create');
@@ -75,7 +74,7 @@ class PostController extends Controller
         ];
 
         $old_image = DB::table('post')->where('id', $id)->first()->image;
-        $image_path = public_path('/assets/image/'. $old_image);
+        $image_path = public_path('/assets/image/' . $old_image);
 
         if (File::exists($image_path)) {
             File::delete($image_path);

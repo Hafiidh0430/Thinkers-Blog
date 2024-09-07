@@ -35,16 +35,4 @@
                 type="submit">No, Cancel</a>
         </div>
     </form>
-    <script>
-        const createBtn = document.querySelector('.btn-submit-create');
-        createBtn.addEventListener('submit', (event) => {
-            event.preventDefault();
-            createBtn.innerHTML = "Creating post..."
-            createBtn.disabled = true;
-            setTimeout(() => {
-                createBtn.disabled = false;
-                createBtn.innerHTML = "Create post"
-            }, 2000);
-        })
-    </script>
 @endsection
