@@ -4,13 +4,27 @@
 
 @section('content1')
     <section class="container_content_index flex flex-col gap-10">
-        <div class="blog_category_index flex items-baseline w-full gap-6 text-sm">
-            <a class="text-xl pb-4" href="">+</a>
-            <a class="hover:border-b-[.1rem] pb-4 border-b-[.1rem] border-black" href="">For you</a>
-            <a class="hover:border-b-[.1rem] pb-4 border-black" href="">Following</a>
-            <a class="hover:border-b-[.1rem] pb-4 border-black" href="">Technology</a>
-            <a class="hover:border-b-[.1rem] pb-4 border-black" href="">Productivity</a>
-            <a class="hover:border-b-[.1rem] pb-4 border-black" href="">Family</a>
+        <div class="category w-full flex justify-between items-center">
+            <div class="blog_category_index flex items-baseline w-full gap-6 text-sm">
+                <a class="text-xl pb-4" href="">+</a>
+                <a class="hover:border-b-[.1rem] pb-4 border-b-[.1rem] border-black" href="">For you</a>
+                <a class="hover:border-b-[.1rem] pb-4 border-black" href="">Following</a>
+                <a class="hover:border-b-[.1rem] pb-4 border-black" href="">Technology</a>
+                <a class="hover:border-b-[.1rem] pb-4 border-black" href="">Productivity</a>
+                <a class="hover:border-b-[.1rem] pb-4 border-black" href="">Family</a>
+            </div>
+
+            <ul class="text-sm max-md:flex hidden font-medium text-center">
+                <li class="me-2">
+                    <a href="#" aria-current="page"
+                        class="inline-block px-4 py-2 text-blue-600 bg-gray-100 rounded-t-lg active dark:bg-gray-800 dark:text-blue-500">Articles</a>
+                </li>
+                <li class="me-2">
+                    <a href="#"
+                        class="inline-block px-4 py-2 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">Thinkers</a>
+                </li>
+            </ul>
+
         </div>
         <div class="grid max-md:grid-cols-1 grid-cols-[3fr,1.5fr] gap-16">
             <div class="blog_section flex flex-col gap-10">
@@ -22,14 +36,14 @@
                                 <h5 class="user_username text-sm">{{ $blog->username }}</h5>
                             </div>
                             <div class="blog_content grid grid-rows-[2fr,1fr] gap-2">
-                                <div class="detail_blog max-md:grid-cols-1 w-full grid grid-cols-[3fr,1fr] gap-8">
+                                <div class="detail_blog w-full grid grid-cols-[3fr,1fr] gap-8">
                                     <div class="flex flex-col gap-2">
                                         <h3 class="blog_title text-2xl font-extrabold">{{ $blog->title }}</h3>
                                         <p class="blog_description text-[1rem] text-gray-500">
                                             {{ Str::limit($blog->description, 100) }}
                                         </p>
                                     </div>
-                                    <img class="aspect-[16/9] max-md:hidden block w-full h-full rounded-lg object-cover bg-slate-200 shadow-xl shadow-slate-100"
+                                    <img class="aspect-[16/9] block w-full h-full rounded-lg object-cover bg-slate-200 shadow-xl shadow-slate-100"
                                         src="{{ asset('assets/image/' . $blog->image) }}">
                                 </div>
                                 <div class="option_blog flex items-center justify-between">
@@ -82,7 +96,8 @@
                 @empty
                 @endforelse
             </div>
-            <div class="blog_section flex flex-col gap-14">
+            <div class="blog_section flex flex-col gap-8">
+                <h5 class="font-semibold">People are thinking</h5>
                 @forelse ($article as $blog)
                     <a href="{{ route('pages.post', ['id' => $blog->id]) }}" class="blog_left">
                         <div class="blog_card flex flex-col gap-4">
@@ -145,4 +160,3 @@
         </div>
     </section>
 @endsection
-

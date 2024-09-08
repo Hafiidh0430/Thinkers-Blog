@@ -95,9 +95,7 @@ class PostController extends Controller
     public function deleteStore($id)
     {
         $post = DB::table('post')->where('id', $id)->delete();
-        if ($post) {
-            return back();
-        }
+        if ($post) return back();
     }
 
     public function post($id)

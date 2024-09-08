@@ -1,7 +1,7 @@
 @extends('layout')
 @section('title', '')
 @section('content1')
-    <div class="flex flex-col max-md:md:sm:px-[5rem] xl:lg:px-[10rem]  gap-6 w-full items-start container-post">
+    <div class="flex flex-col max-md:px-[3rem] md:px-[5rem] xl:lg:px-[10rem]  gap-6 w-full items-start container-post">
         <h1 class="text-[2.8rem] max-md:text-[2.5rem] leading-tight font-extrabold">{{ $post->title }}</h1>
         <div class="author flex items-center gap-4">
             <img class="h-[2.8rem] rounded-full w-[2.8rem] bg-slate-400" src="" alt="">
@@ -51,6 +51,6 @@
         @if ($post->image)
             <img class="w-full h-[32rem] object-cover" src="{{ asset('assets/image/' . $post->image) }}" />
         @endif
-        <p class="text-lg text-slate-600 flex flex-col">{!! nl2br(e($post->description)) !!}</p>
+        <p class="text-lg text-slate-600 text-justify flex flex-col">{!! nl2br(e($post->description)) !!}</p>
     </div>
 @endsection

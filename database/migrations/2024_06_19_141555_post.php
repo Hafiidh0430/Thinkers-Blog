@@ -8,14 +8,14 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('post', function(Blueprint $table) {
-            $table->id('id')->primary();
-            $table->string('username')->nullable(false);
-            $table->string('image')->nullable(true);
-            $table->text('title')->nullable(false);
-            $table->text('description')->nullable(false);
-            $table->date('create_at')->default(now());
-          });
+            Schema::create('post', function(Blueprint $table) {
+                $table->id('id')->primary();
+                $table->string('username')->nullable(false);
+                $table->string('image')->nullable(true);
+                $table->text('title')->nullable(false);
+                $table->text('description')->nullable(false);
+                $table->timestamp('create_at')->default(now());
+            });
     }
     public function down(): void
     {
