@@ -34,7 +34,7 @@
                                     d="M7 12a2 2 0 1 1-4 0a2 2 0 0 1 4 0m7 0a2 2 0 1 1-4 0a2 2 0 0 1 4 0m7 0a2 2 0 1 1-4 0a2 2 0 0 1 4 0" />
                             </svg>
                             <div class="options shadow-2xl shadow-gray-200 mt-2 absolute z-30 rounded-lg p-4 bg-white">
-                                <a href="{{ route('pages.update', ['id' => $tweet->id]) }}"
+                                <a href="{{ route('pages.update', ['id' => $tweet->id_post]) }}"
                                     class="edit-button flex items-center rounded-md hover:bg-slate-200 px-4 py-2 gap-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
                                         viewBox="0 0 24 24">
@@ -43,7 +43,7 @@
                                     </svg>
                                     <p>Edit</p>
                                 </a>
-                                <button id="{{ $tweet->id }}"
+                                <button id="{{ $tweet->id_post }}"
                                     class="delete-button text-red-600 hover:bg-red-200 flex items-center rounded-md px-4 py-2 gap-2"
                                     type="submit"> <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
                                         viewBox="0 0 24 24">
@@ -74,7 +74,7 @@
 
                             <div class="btn-options flex gap-4 text-md font-semibold">
                                 <button class="px-4 keep-modal rounded-lg bg-slate-100">No, Keep it.</button>
-                                <form method="POST" action="{{ route('pages.deleteStore', ['id' => $tweet->id]) }}">
+                                <form method="POST" action="{{ route('pages.deleteStore', ['id' => $tweet->id_post]) }}">
                                     @method('DELETE')
                                     @csrf
                                     <button type="submit" class="px-4 py-2 bg-red-200 rounded-lg text-red-600">Yes,

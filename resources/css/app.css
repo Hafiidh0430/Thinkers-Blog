@@ -37,6 +37,10 @@
     display: flex;
 }
 
+.options_blog_container.active {
+    display: block;
+} 
+
 .user_preferences.active {
     display: flex;
     flex-direction: column;

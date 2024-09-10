@@ -16,10 +16,11 @@ class PostController extends Controller
         $search = $request->input('search');
         if ($search) {
             $post = DB::table('post')->whereRaw("title LIKE? OR description LIKE?", ["%{$search}%", "%{$search}%"])->get();
+            $article = DB::table('post')->where('image', null)->whereRaw("title LIKE? OR description LIKE?", ["%{$search}%", "%{$search}%"])->get();
         } else {
             $post = DB::table('post')->whereNotNull('image')->get();
+            $article = DB::table('post')->where('image', null)->get();
         }
-        $article = DB::table('post')->where('image', null)->get();
         return view('pages.index', ['posts' => $post, 'search' => $search, 'article' => $article]);
     }
 
@@ -56,7 +57,7 @@ class PostController extends Controller
     }
     public function update($id)
     {
-        $post = DB::table('post')->where('id', $id)->first();
+        $post = DB::table('post')->where('id_post', $id)->first();
         return view('pages.update', ['old' => $post]);
     }
     public function updateStore(Request $request, $id)
@@ -73,7 +74,7 @@ class PostController extends Controller
             'description' => $request->description,
         ];
 
-        $old_image = DB::table('post')->where('id', $id)->first()->image;
+        $old_image = DB::table('post')->where('id_post', $id)->first()->image;
         $image_path = public_path('/assets/image/' . $old_image);
 
         if (File::exists($image_path)) {
@@ -86,7 +87,7 @@ class PostController extends Controller
             };
         }
 
-        $update = DB::table('post')->where('id', $id)->update($data);
+        $update = DB::table('post')->where('id_post', $id)->update($data);
         if ($update) {
             return redirect()->route('pages.myInsights');
         }
@@ -94,13 +95,13 @@ class PostController extends Controller
 
     public function deleteStore($id)
     {
-        $post = DB::table('post')->where('id', $id)->delete();
+        $post = DB::table('post')->where('id_post', $id)->delete();
         if ($post) return back();
     }
 
     public function post($id)
     {
-        $post = DB::table('post')->where('id', $id)->first();
+        $post = DB::table('post')->where('id_post', $id)->first();
         return view('pages.post', ['post' => $post]);
     }
 
