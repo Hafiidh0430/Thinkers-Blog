@@ -1,4 +1,4 @@
-<x-layout-create-post :btn_text="'Update'" :action="route('pages.updateStore', ['id' => $old->id_post])" :method="'POST'">
+<x-layout-post :btn_text="'Update'" :action="route('pages.updateStore', ['id' => $old->id_post])" :method="'POST'">
     <div class="flex gap-4 flex-col px-24 mt-16">
         @csrf
         @method('PATCH')
@@ -10,5 +10,5 @@
             class="px-4 py-2 text-3xl {{ $errors->has('description') ? 'border-b-red-600' : ' border-b-slate-300' }} outline-none  bg-transparent border-b"
             name="description" placeholder="Tell your story">{{ $old->description }}</textarea>
     </div>
-</x-layout-create-post>
+</x-layout-post>
 

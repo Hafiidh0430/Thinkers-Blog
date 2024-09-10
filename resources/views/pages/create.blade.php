@@ -1,5 +1,5 @@
-<x-layout-create-post :action="route('pages.addStore')" :method="'POST'">
-    <div class="flex gap-4 flex-col px-24 mt-16">
+<x-layout-post :action="route('pages.addStore')" :method="'POST'">
+    <div class="flex gap-4 flex-col px-24 mt-8">
         @csrf
         <input type="file" name="image" id="">
         <input
@@ -21,4 +21,4 @@
             </div>
         @enderror
     </div>
-</x-layout-create-post>
+</x-layout-post>

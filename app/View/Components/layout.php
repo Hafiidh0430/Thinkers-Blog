@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class layout-create-post extends Component
+class layout extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class layout-create-post extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.layout-create-post');
+        return view('components.layout');
     }
 }

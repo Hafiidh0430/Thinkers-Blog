@@ -16,12 +16,10 @@ class PostController extends Controller
         $search = $request->input('search');
         if ($search) {
             $post = DB::table('post')->whereRaw("title LIKE? OR description LIKE?", ["%{$search}%", "%{$search}%"])->get();
-            $article = DB::table('post')->where('image', null)->whereRaw("title LIKE? OR description LIKE?", ["%{$search}%", "%{$search}%"])->get();
         } else {
-            $post = DB::table('post')->whereNotNull('image')->get();
-            $article = DB::table('post')->where('image', null)->get();
+            $post = DB::table('post')->get();
         }
-        return view('pages.index', ['posts' => $post, 'search' => $search, 'article' => $article]);
+        return view('pages.index', ['posts' => $post, 'search' => $search]);
     }
 
     public function add()
@@ -89,7 +87,7 @@ class PostController extends Controller
 
         $update = DB::table('post')->where('id_post', $id)->update($data);
         if ($update) {
-            return redirect()->route('pages.myInsights');
+            return redirect()->route('pages.stories');
         }
     }
 
@@ -103,11 +101,5 @@ class PostController extends Controller
     {
         $post = DB::table('post')->where('id_post', $id)->first();
         return view('pages.post', ['post' => $post]);
-    }
-
-    public function insights()
-    {
-        $tweets = DB::table('post')->get();
-        return view('pages.myInsights', ['tweets' => $tweets]);
     }
 }

@@ -1,8 +1,4 @@
-@extends('layout')
-
-@section('title', 'Home')
-
-@section('content1')
+<x-layout :search_value="'{{ $search }}'">
     <section class="container_content_index flex flex-col gap-10">
         <div class="category w-full flex justify-between items-center">
             <div class="blog_category_index flex items-baseline w-full gap-6 text-sm">
@@ -17,18 +13,18 @@
             <ul class="text-sm max-md:flex hidden font-medium text-center">
                 <li class="me-2">
                     <a href="#" aria-current="page"
-                        class="inline-block px-4 py-2 text-blue-600 bg-gray-100 rounded-t-lg active dark:bg-gray-800 dark:text-blue-500">Articles</a>
+                        class="inline-block px-4 py-2 text-slate-600 bg-slate-100 rounded-full">Articles</a>
                 </li>
                 <li class="me-2">
                     <a href="#"
-                        class="inline-block px-4 py-2 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">Thinkers</a>
+                        class="inline-block px-4 py-2 text-slate-600 bg-slate-100 rounded-full">Thinkers</a>
                 </li>
             </ul>
 
         </div>
         <div class="grid max-md:grid-cols-1 grid-cols-[3fr,1.5fr] gap-16">
             <div class="blog_section pt-flex flex-col">
-                @forelse ($posts as $blog)
+                @forelse ($posts->filter(fn($blog) => $blog->image != null) as $blog)
                     <div class="blog_card flex flex-col {{ $blog->id_post == 1 ? 'pt-0' : 'pt-6' }} gap-4">
                         <div class="user_card flex items-center gap-[.6rem]">
                             <div class="user_profile h-[1.8rem] rounded-full w-[1.8rem] bg-neutral-600"></div>
@@ -91,7 +87,8 @@
                                         </svg>
                                         <div
                                             class="options_blog_container hidden absolute text-sm right-0 shadow-lg border rounded-lg bg-white mt-12 top-0">
-                                            <div class="options_blog_preferences w-max py-4 pl-4 pr-8 flex flex-col gap-3 ">
+                                            <div
+                                                class="options_blog_preferences w-max py-4 pl-4 pr-8 flex flex-col gap-3 ">
                                                 <div
                                                     class="mute_author cursor-pointer hover:text-slate-950 text-slate-500 flex items-center gap-2">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -109,7 +106,8 @@
                                                         <path stroke-linecap="round" stroke-linejoin="round"
                                                             d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
                                                     </svg>
-                                                    <a class="text-red-500 group-hover:text-red-600" href="">Report
+                                                    <a class="text-red-500 group-hover:text-red-600"
+                                                        href="">Report
                                                         story</a>
                                                 </div>
                                             </div>
@@ -125,9 +123,9 @@
             </div>
             <div class="blog_section flex flex-col gap-8">
                 <h5 class="font-semibold">People are thinking</h5>
-                @forelse ($article as $blog)
+                @forelse ($posts->filter(fn($blog) => $blog->image == null) as $blog)
                     <a href="{{ route('pages.post', ['id' => $blog->id_post]) }}" class="blog_left">
-                        <div class="blog_card flex flex-col">
+                        <div class="blog_card flex flex-col gap-3">
                             <div class="user_card flex items-center gap-[.6rem]">
                                 <div class="user_profile h-[1.6rem] rounded-full w-[1.6rem] bg-neutral-600"></div>
                                 <h5 class="user_username text-sm">{{ $blog->username }}</h5>
@@ -153,4 +151,4 @@
             })
         });
     </script>
-@endsection
+</x-layout>
