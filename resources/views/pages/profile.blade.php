@@ -1,3 +1,3 @@
-<x-layout>
+<x-profile-preferences>
 
-</x-layout>
+</x-profile-preferences>

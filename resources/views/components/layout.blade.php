@@ -20,7 +20,7 @@
     @props([
         'search_value' => '',
     ])
-    <div class="container-blog px-12 py-8 lg:px-24">
+    <div class="container-blog px-12 py-8 lg:px-16">
         <div class="wrapper">
             <header>
                 <nav class="flex max-md:hidden justify-between items-center">
@@ -47,7 +47,7 @@
                                 <span
                                     class="user_profile cursor-pointer h-[2.5rem] rounded-full w-[2.5rem] bg-neutral-900"></span>
                                 <div
-                                    class="user_preferences hidden absolute text-sm right-0 shadow-lg border rounded-lg bg-white mt-12 top-0">
+                                    class="user_preferences hidden z-50 absolute text-sm right-0 shadow-lg border rounded-lg bg-white mt-12 top-0">
                                     <div class="preferences_1 py-6 pl-6 pr-16 flex flex-col gap-4 ">
                                         <a href="{{ route('pages.profile') }}"
                                             class="user_profile cursor-pointer {{ request()->routeIs('pages.profile') ? 'text-slate-950' : 'text-slate-500' }}  hover:text-slate-950 flex items-center gap-3">
@@ -77,7 +77,7 @@
                                             <p class="text-[.9rem]">Stories</p>
                                         </a>
                                     </div>
-                                    <span class="block w-full h-[1px] bg-slate-300"></span>
+                                    <span class="block w-full h-[1px] bg-slate-200"></span>
                                     <div class="preferences_2 py-6 pl-6 pr-16 flex flex-col gap-4 ">
                                         <div
                                             class="user_profile cursor-pointer hover:text-slate-950 text-slate-500 flex items-center gap-2">
@@ -92,7 +92,7 @@
                                             <p class="text-[.9rem]">Help</p>
                                         </div>
                                     </div>
-                                    <span class="block w-full h-[1px] bg-slate-300"></span>
+                                    <span class="block w-full h-[1px] bg-slate-200"></span>
                                     <div class="preferences_3 py-6 pl-6 pr-16 flex flex-col gap-3 ">
                                         <div
                                             class="user_profile cursor-pointer hover:text-slate-950 text-slate-500 flex items-center gap-2">
@@ -108,9 +108,9 @@
                     </div>
                 </nav>
             </header>
-            <span class="block w-full h-[.05rem] my-4 rounded-full bg-slate-300"></span>
+            <span class="block w-full h-[.05rem] mt-4 rounded-full bg-slate-200"></span>
 
-            <main class="flex flex-col mt-6">
+            <main class="flex flex-col ">
                 {{ $slot }}
             </main>
         </div>

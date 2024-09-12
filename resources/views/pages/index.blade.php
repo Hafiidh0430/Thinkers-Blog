@@ -1,6 +1,6 @@
 <x-layout :search_value="'{{ $search }}'">
-    <section class="container_content_index flex flex-col gap-10">
-        <div class="category w-full flex justify-between items-center">
+    <section class="container_content_index flex pt-6 flex-col gap-10">
+        <div class="category w-full max-sm:flex-col max-sm:items-start max-sm:gap-6 flex justify-between items-center">
             <div class="blog_category_index flex items-baseline w-full gap-6 text-sm">
                 <a class="text-xl pb-4" href="">+</a>
                 <a class="hover:border-b-[.1rem] pb-4 border-b-[.1rem] border-black" href="">For you</a>

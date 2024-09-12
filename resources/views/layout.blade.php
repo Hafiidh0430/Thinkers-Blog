@@ -74,7 +74,7 @@
                                             <p class="text-[.9rem]">Stories</p>
                                         </div>
                                     </div>
-                                    <span class="block w-full h-[1px] bg-slate-300"></span>
+                                    <span class="block w-full h-[1px] bg-slate-200"></span>
                                     <div class="preferences_2 py-6 pl-6 pr-16 flex flex-col gap-4 ">
                                         <div
                                             class="user_profile cursor-pointer hover:text-slate-950 text-slate-500 flex items-center gap-2">
@@ -89,7 +89,7 @@
                                             <p class="text-[.9rem]">Help</p>
                                         </div>
                                     </div>
-                                    <span class="block w-full h-[1px] bg-slate-300"></span>
+                                    <span class="block w-full h-[1px] bg-slate-200"></span>
                                     <div class="preferences_3 py-6 pl-6 pr-16 flex flex-col gap-3 ">
                                         <div
                                             class="user_profile cursor-pointer hover:text-slate-950 text-slate-500 flex items-center gap-2">
@@ -104,7 +104,7 @@
                     </div>
                 </nav>
             </header>
-            <span class="block w-full h-[.05rem] my-4 rounded-full bg-slate-300"></span>
+            <span class="block w-full h-[.05rem] my-4 rounded-full bg-slate-200"></span>
 
             <main class="flex flex-col mt-6">
                 @yield('content1')
