@@ -9,7 +9,7 @@
                 <h3 class="username">
                     {{ $post->username }} - <a class="text-sm underline" href="">Follow</a>
                 </h3>
-                <p class="text-sm">Published at {{ $post->create_at }}</p>
+                <p class="text-sm">Published at {{ $post->created_at }}</p>
             </div>
         </div>
         <div class="option_blog flex w-full items-center justify-between">

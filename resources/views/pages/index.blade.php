@@ -46,7 +46,7 @@
                             </a>
                             <div class="option_blog flex items-center justify-between">
                                 <div class="information_blog flex items-center gap-6">
-                                    <p class="date text-[.8rem]">{{ $blog->create_at }}</p>
+                                    <p class="date text-[.8rem]">{{ $blog->created_at }}</p>
                                     <p class="blog_like inline-flex text-[.8rem] items-center gap-1">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke-width="1.5" stroke="currentColor" class="size-4">
@@ -121,7 +121,7 @@
                     <h1>Empty Blog!</h1>
                 @endforelse
             </div>
-            <div class="blog_section flex flex-col gap-8">
+            <div class="blog_section max-md:hidden flex flex-col gap-8">
                 <h5 class="font-semibold">People are thinking</h5>
                 @forelse ($posts->filter(fn($blog) => $blog->image == null) as $blog)
                     <a href="{{ route('pages.post', ['id' => $blog->id_post]) }}" class="blog_left">

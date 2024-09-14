@@ -15,9 +15,9 @@ class PostController extends Controller
     {
         $search = $request->input('search');
         if ($search) {
-            $post = DB::table('post')->whereRaw("title LIKE? OR description LIKE?", ["%{$search}%", "%{$search}%"])->get();
+            $post = Post::whereRaw("title LIKE? OR description LIKE?", ["%{$search}%", "%{$search}%"])->get();
         } else {
-            $post = DB::table('post')->get();
+            $post = Post::get();
         }
         return view('pages.index', ['posts' => $post, 'search' => $search]);
     }
@@ -39,6 +39,8 @@ class PostController extends Controller
             'username' => auth()->user()->username,
             'title' => $request->title,
             'description' => $request->description,
+            'created_at' => now(), // Atur tanggal secara manual
+            'updated_at' => now()
         ];
 
         if ($request->hasFile('image')) {
@@ -48,14 +50,14 @@ class PostController extends Controller
             $data['image'] = $filename;
         };
 
-        $post = DB::table('post')->insert($data);
+        $post = Post::insert($data);
         if ($post) {
             return redirect()->route('pages.index');
         }
     }
     public function update($id)
     {
-        $post = DB::table('post')->where('id_post', $id)->first();
+        $post = Post::where('id_post', $id)->first();
         return view('pages.update', ['old' => $post]);
     }
     public function updateStore(Request $request, $id)
@@ -70,14 +72,16 @@ class PostController extends Controller
             'username' => auth()->user()->username,
             'title' => $request->title,
             'description' => $request->description,
+            'created_at' => now(),
+            'updated_at' => now()
         ];
 
-        $old_image = DB::table('post')->where('id_post', $id)->first()->image;
+        $old_image = Post::where('id_post', $id)->first()->image;
         $image_path = public_path('/assets/image/' . $old_image);
 
         if (File::exists($image_path)) {
-            File::delete($image_path);
             if ($request->hasFile('image')) {
+                File::delete($image_path);
                 $image = $request->file('image');
                 $filename = time() . '-' . $image->getClientOriginalName();
                 $image->move(public_path('assets/image'), $filename);
@@ -85,7 +89,7 @@ class PostController extends Controller
             };
         }
 
-        $update = DB::table('post')->where('id_post', $id)->update($data);
+        $update = Post::where('id_post', $id)->update($data);
         if ($update) {
             return redirect()->route('pages.stories');
         }
@@ -93,13 +97,13 @@ class PostController extends Controller
 
     public function deleteStore($id)
     {
-        $post = DB::table('post')->where('id_post', $id)->delete();
+        $post = Post::where('id_post', $id)->delete();
         if ($post) return back();
     }
 
     public function post($id)
     {
-        $post = DB::table('post')->where('id_post', $id)->first();
+        $post = Post::where('id_post', $id)->first();
         return view('pages.post', ['post' => $post]);
     }
 }

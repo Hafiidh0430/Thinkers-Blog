@@ -15,7 +15,7 @@ return new class extends Migration
                 $table->string('image')->nullable(true);
                 $table->text('title')->nullable(false);
                 $table->text('description')->nullable(false);
-                $table->timestamp('create_at')->default(Carbon::now());
+                $table->timestamps();
             });
     }
     public function down(): void

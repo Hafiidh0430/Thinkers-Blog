@@ -46,6 +46,10 @@
     flex-direction: column;
 }
 
+.options_profile_container.active {
+    display: block;
+}
+
 @media screen and (min-width: 1366px){
      :root {
         font-size: 1.1vw;

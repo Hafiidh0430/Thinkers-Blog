@@ -4,18 +4,22 @@
             <div class="profile inline-flex items-center gap-6">
 
             </div>
-            <h1 class="text-[3rem] gap-6 inline-flex w-full font-semibold">
-                <div class="w-[4.5rem] h-full rounded-full bg-black"></div> Muhammad Hafiidh
-            </h1>
+            <div class="gap-6 flex items-center w-full">
+                <div class="w-[4.5rem] h-[4.5rem] rounded-full bg-black"></div>
+                <div class="data_profile">
+                    <h1 class="text-[2.5rem] font-semibold">Muhammad Hafiidh</h1>
+                    <p class="text-lg font text-slate-400">Product Designer</p>
+                </div>
+            </div>
             <div class="profile_actions relative flex items-center gap-3">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2"
-                    stroke="currentColor" class="size-6">
+                    stroke="currentColor" class="option-profile cursor-pointer size-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
                 </svg>
                 <div
-                    class="options_blog_container absolute text-sm right-0 shadow-lg border rounded-lg bg-white mt-16 top-0">
-                    <div class="options_blog_preferences w-max py-4 pl-4 pr-8 flex flex-col gap-3 ">
+                    class="options_profile_container hidden absolute text-sm right-0 shadow-lg border rounded-lg bg-white mt-16 top-0">
+                    <div class="options_profile_preferences w-max py-4 pl-4 pr-8 flex flex-col gap-3 ">
                         <div
                             class="mute_author cursor-pointer hover:text-slate-950 text-slate-500 flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -34,13 +38,12 @@
                             </svg>
                             <a href="">Edit profile</a>
                         </div>
-
                     </div>
                 </div>
             </div>
         </header>
 
-        <ul class="text-sm flex mt-4 items-center gap-4 font-medium text-center">
+        <ul class="text-sm flex mt-6 items-center gap-4 font-medium text-center">
             <li class="me-2">
                 <a href="#" aria-current="page" class="inline-block py-2 border-b-[.1rem] border-black">Your
                     Post</a>
@@ -51,4 +54,14 @@
             </li>
         </ul>
     </div>
+
+    <script>
+        const option_profile = document.querySelector('.option-profile ');
+        const options_profile_container = document.querySelector('.options_profile_container ');
+
+        option_profile.addEventListener("click", (event) => {
+            event.preventDefault();
+            options_profile_container.classList.toggle('active');
+        })
+    </script>
 </x-layout>

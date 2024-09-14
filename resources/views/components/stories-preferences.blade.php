@@ -10,7 +10,7 @@
             </div>
         </header>
 
-        <ul class="text-sm flex mt-4 items-center font-medium text-center">
+        <ul class="text-sm flex mt-6 items-center font-medium text-center">
             <li class="me-2">
                 <a href="#" aria-current="page"
                     class="inline-block px-4 py-2 text-slate-600 bg-slate-100 rounded-full">Drafts</a>
