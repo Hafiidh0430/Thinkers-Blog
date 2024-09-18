@@ -15,7 +15,6 @@ return new class extends Migration
         Schema::create('post_category', function (Blueprint $table) {
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('post_id');
-
             $table->foreign('category_id')->references('id_category')->on('category')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('post_id')->references('id_post')->on('post')->onDelete('cascade')->onUpdate('cascade');
         });

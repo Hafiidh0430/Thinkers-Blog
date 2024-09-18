@@ -1,6 +1,6 @@
-<x-layout :search_value="'{{ $search }}'">
-    <section class="container_content_index flex pt-6 flex-col gap-10">
-        <div class="category w-full max-sm:flex-col max-sm:items-start max-sm:gap-6 flex justify-between items-center">
+<x-layout :search_value="$search_value">
+    <section class="container_content_index grid max-md:grid-cols-1 grid-cols-[3fr,.1fr,2fr]">
+        <div class="container_blog w-full max-md:pr-0 pr-10 flex-col pt-8 gap-10 flex justify-between items-center">
             <div class="blog_category_index flex items-baseline w-full gap-6 text-sm">
                 <a class="text-xl pb-4" href="">+</a>
                 <a class="hover:border-b-[.1rem] pb-4 border-b-[.1rem] border-black" href="">For you</a>
@@ -9,23 +9,9 @@
                 <a class="hover:border-b-[.1rem] pb-4 border-black" href="">Productivity</a>
                 <a class="hover:border-b-[.1rem] pb-4 border-black" href="">Family</a>
             </div>
-
-            <ul class="text-sm max-md:flex hidden font-medium text-center">
-                <li class="me-2">
-                    <a href="#" aria-current="page"
-                        class="inline-block px-4 py-2 text-slate-600 bg-slate-100 rounded-full">Articles</a>
-                </li>
-                <li class="me-2">
-                    <a href="#"
-                        class="inline-block px-4 py-2 text-slate-600 bg-slate-100 rounded-full">Thinkers</a>
-                </li>
-            </ul>
-
-        </div>
-        <div class="grid max-md:grid-cols-1 grid-cols-[3fr,1.5fr] gap-16">
-            <div class="blog_section pt-flex flex-col">
-                @forelse ($posts->filter(fn($blog) => $blog->image != null) as $blog)
-                    <div class="blog_card flex flex-col {{ $blog->id_post == 1 ? 'pt-0' : 'pt-6' }} gap-4">
+            <div class="blog_section flex flex-col gap-6">
+                @forelse ($posts as $blog)
+                    <div class="blog_card flex flex-col gap-4">
                         <div class="user_card flex items-center gap-[.6rem]">
                             <div class="user_profile h-[1.8rem] rounded-full w-[1.8rem] bg-neutral-600"></div>
                             <h5 class="user_username inline-flex gap-3 items-center">{{ $blog->username }} <a
@@ -38,7 +24,7 @@
                                 <div class="flex flex-col gap-2">
                                     <h3 class="blog_title text-2xl font-extrabold">{{ $blog->title }}</h3>
                                     <p class="blog_description text-[1rem] text-gray-500">
-                                        {{ Str::limit($blog->description, 100) }}
+                                        {{ Str::limit($blog->description, 120) }}
                                     </p>
                                 </div>
                                 <img class="aspect-[16/11] block w-full h-full rounded-lg bg-center object-cover bg-slate-200 shadow-xl shadow-slate-100"
@@ -86,30 +72,39 @@
                                                 d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
                                         </svg>
                                         <div
-                                            class="options_blog_container hidden absolute text-sm right-0 shadow-lg border rounded-lg bg-white mt-12 top-0">
+                                            class="options_blog_container hidden absolute text-sm right-0 shadow-lg rounded-lg bg-neutral-50 mt-12 top-0">
                                             <div
                                                 class="options_blog_preferences w-max py-4 pl-4 pr-8 flex flex-col gap-3 ">
-                                                <div
-                                                    class="mute_author cursor-pointer hover:text-slate-950 text-slate-500 flex items-center gap-2">
+                                                <a href=""
+                                                    class="mute_author cursor-pointer hover:text-slate-950 text-slate-500 inline-flex items-center gap-2">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                         viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                         class="size-[1.2rem]">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M9.143 17.082a24.248 24.248 0 0 0 3.844.148m-3.844-.148a23.856 23.856 0 0 1-5.455-1.31 8.964 8.964 0 0 0 2.3-5.542m3.155 6.852a3 3 0 0 0 5.667 1.97m1.965-2.277L21 21m-4.225-4.225a23.81 23.81 0 0 0 3.536-1.003A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6.53 6.53m10.245 10.245L6.53 6.53M3 3l3.53 3.53" />
+                                                            d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 0 0-3.7-3.7 48.678 48.678 0 0 0-7.324 0 4.006 4.006 0 0 0-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 0 0 3.7 3.7 48.656 48.656 0 0 0 7.324 0 4.006 4.006 0 0 0 3.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3-3 3" />
                                                     </svg>
-                                                    <a href="">Mute author</a>
-                                                </div>
-                                                <div class="report_story group cursor-pointer flex items-center gap-2">
+                                                    <p>Repost story</p>
+                                                </a>
+                                                <a href=""
+                                                    class="mute_author cursor-pointer hover:text-slate-950 text-slate-500 inline-flex items-center gap-2">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                        class="size-[1.2rem] text-red-500 group-hover:text-red-600 ">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
-                                                    </svg>
-                                                    <a class="text-red-500 group-hover:text-red-600"
-                                                        href="">Report
-                                                        story</a>
-                                                </div>
+                                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                    class="size-[1.2rem]">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M9.143 17.082a24.248 24.248 0 0 0 3.844.148m-3.844-.148a23.856 23.856 0 0 1-5.455-1.31 8.964 8.964 0 0 0 2.3-5.542m3.155 6.852a3 3 0 0 0 5.667 1.97m1.965-2.277L21 21m-4.225-4.225a23.81 23.81 0 0 0 3.536-1.003A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6.53 6.53m10.245 10.245L6.53 6.53M3 3l3.53 3.53" />
+                                                </svg>
+                                                    <p>Mute author</p>
+                                                </a>
+                                                <a href=""
+                                                    class="mute_author cursor-pointer group hover:text-slate-950 text-slate-500 inline-flex items-center gap-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                    class="size-[1.2rem] text-red-500 group-hover:text-red-600 ">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                                                </svg>
+                                                    <p class="text-red-500 group-hover:text-red-600">Report story</p>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -121,25 +116,28 @@
                     <h1>Empty Blog!</h1>
                 @endforelse
             </div>
-            <div class="blog_section max-md:hidden flex flex-col gap-8">
-                <h5 class="font-semibold">People are thinking</h5>
-                @forelse ($posts->filter(fn($blog) => $blog->image == null) as $blog)
-                    <a href="{{ route('pages.post', ['id' => $blog->id_post]) }}" class="blog_left">
-                        <div class="blog_card flex flex-col gap-3">
-                            <div class="user_card flex items-center gap-[.6rem]">
-                                <div class="user_profile h-[1.6rem] rounded-full w-[1.6rem] bg-neutral-600"></div>
-                                <h5 class="user_username text-sm">{{ $blog->username }}</h5>
-                            </div>
-                            <div class="flex flex-col gap-2">
-                                <h3 class="blog_title text-xl font-extrabold">{{ $blog->title }}</h3>
-                            </div>
-                        </div>
-                    </a>
-                @empty
-                    <h1>Empty Thinker!</h1>
-                @endforelse
-            </div>
         </div>
+        <span class="max-md:hidden h-full w-[1px] bg-slate-200 block"></span>
+
+        <div class="blog_section max-md:hidden pl-4 flex pt-8 flex-col gap-8">
+            <h5 class="font-semibold text-lg">Thinkers picks</h5>
+            @forelse ($posts->filter(fn($blog) => $blog->image == null) as $blog)
+                <a href="{{ route('pages.post', ['id' => $blog->id_post]) }}" class="blog_left">
+                    <div class="blog_card flex flex-col gap-3">
+                        <div class="user_card flex items-center gap-[.6rem]">
+                            <div class="user_profile h-[1.6rem] rounded-full w-[1.6rem] bg-neutral-600"></div>
+                            <h5 class="user_username text-sm">{{ $blog->username }}</h5>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <h3 class="blog_title text-xl font-extrabold">{{ $blog->title }}</h3>
+                        </div>
+                    </div>
+                </a>
+            @empty
+                <h1>Empty Thinker!</h1>
+            @endforelse
+        </div>
+
     </section>
     <script>
         const options_blog = document.querySelectorAll(".options_blog");

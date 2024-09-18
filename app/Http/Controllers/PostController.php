@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -19,7 +16,7 @@ class PostController extends Controller
         } else {
             $post = Post::get();
         }
-        return view('pages.index', ['posts' => $post, 'search' => $search]);
+        return view('pages.index', ['posts' => $post, 'search_value' => $search]);
     }
 
     public function add()

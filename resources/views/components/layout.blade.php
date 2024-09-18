@@ -23,14 +23,16 @@
     <div class="container-blog px-12 py-8 lg:px-16">
         <div class="wrapper">
             <header>
-                <nav class="flex max-md:hidden justify-between items-center">
+                <nav class="flex justify-between items-center">
                     <a href="{{ route('pages.index') }}" class="title text-3xl font-bold">Thinkers.</a>
                     <div class="nav_options flex items-center relative gap-4">
-                        <x-search :value="'{{ $search_value }}'" />
+                        <span
+                            class="{{ request()->routeIs(['pages.profile', 'pages.post', 'pages.profile.about']) ? 'hidden' : 'block' }}">
+                            <x-search :value="$search_value" /></span>
                         <div class="nav_user flex items-center gap-4 ">
                             @if (Auth::check())
                                 <a href="{{ route('pages.create') }}"
-                                    class="type_blog inline-flex items-center gap-2 text-sm">
+                                    class="type_blog max-md:hidden inline-flex items-center gap-2 text-sm">
                                     <svg class="size-4 text-gray-800 dark:text-white" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -49,8 +51,18 @@
                                 <div
                                     class="user_preferences hidden z-50 absolute text-sm right-0 shadow-lg border rounded-lg bg-white mt-12 top-0">
                                     <div class="preferences_1 py-6 pl-6 pr-16 flex flex-col gap-4 ">
-                                        <a href="{{ route('pages.profile') }}"
-                                            class="user_profile cursor-pointer {{ request()->routeIs('pages.profile') ? 'text-slate-950' : 'text-slate-500' }}  hover:text-slate-950 flex items-center gap-3">
+                                        <a href="{{ route('pages.create') }}"
+                                            class="type_blog hidden max-md:inline-flex items-center gap-2 text-sm">
+                                            <svg class="size-[1.5rem] text-gray-800 dark:text-white" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                <path stroke="currentColor" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="1"
+                                                    d="M10.779 17.779 4.36 19.918 6.5 13.5m4.279 4.279 8.364-8.643a3.027 3.027 0 0 0-2.14-5.165 3.03 3.03 0 0 0-2.14.886L6.5 13.5m4.279 4.279L6.499 13.5m2.14 2.14 6.213-6.504M12.75 7.04 17 11.28" />
+                                            </svg>
+                                            <p class="text-[.9rem]">Create</p>
+                                        </a>
+                                        <a href="{{ route('pages.profile.about') }}"
+                                            class="user_profile cursor-pointer {{ request()->routeIs('pages.profile.about') ? 'text-slate-950' : 'text-slate-500' }}  hover:text-slate-950 flex items-center gap-3">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1" stroke="currentColor" class="size-[1.5rem]">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -108,7 +120,7 @@
                     </div>
                 </nav>
             </header>
-            <span class="block w-full h-[.05rem] mt-4 rounded-full bg-slate-200"></span>
+            <span class="block w-full h-[.05rem] mt-6 rounded-full bg-slate-200"></span>
 
             <main class="flex flex-col ">
                 {{ $slot }}

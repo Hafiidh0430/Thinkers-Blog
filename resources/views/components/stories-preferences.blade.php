@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="container_stories px-24 mt-8">
+    <div class="container_stories px-16 lg:px-24 max-md:max-sm:px-0 mt-8">
         <header class="stories_header flex justify-between">
             <h1 class="text-[3rem] font-semibold">Your stories.</h1>
             <div class="stories_actions flex items-center gap-3">
@@ -12,16 +12,12 @@
 
         <ul class="text-sm flex mt-6 items-center font-medium text-center">
             <li class="me-2">
-                <a href="#" aria-current="page"
-                    class="inline-block px-4 py-2 text-slate-600 bg-slate-100 rounded-full">Drafts</a>
+                <a href="{{ route('pages.stories') }}" aria-current="page"
+                    class="inline-block px-4 py-2 {{request()->routeIs('pages.stories') ? 'bg-slate-100' : ""}} text-slate-600 rounded-full">Published</a>
             </li>
             <li class="me-2">
-                <a href="#" aria-current="page"
-                    class="inline-block px-4 py-2 text-slate-600 rounded-full">Stories</a>
-            </li>
-            <li class="me-2">
-                <a href="#"
-                    class="inline-block px-4 py-2 text-slate-600 rounded-full">Thinks</a>
+                <a href="{{ route('pages.stories.drafts') }}" aria-current="page"
+                    class="inline-block px-4 py-2 {{request()->routeIs('pages.stories.drafts') ? 'bg-slate-100' : ""}} text-slate-600 rounded-full">Drafts</a>
             </li>
         </ul>
     </div>
