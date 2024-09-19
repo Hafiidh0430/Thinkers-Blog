@@ -41,7 +41,7 @@
                                     <div
                                     class="user_preferences hidden z-50 absolute text-sm right-0 shadow-lg border rounded-lg bg-white mt-12 top-0">
                                     <div class="preferences_1 py-6 pl-6 pr-16 flex flex-col gap-4 ">
-                                        <a href="{{ route('pages.profile.about') }}"
+                                        <a href="{{ route('pages.profile.index') }}"
                                             class="user_profile cursor-pointer {{ request()->routeIs('pages.profile') ? 'text-slate-950' : 'text-slate-500' }}  hover:text-slate-950 flex items-center gap-3">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1" stroke="currentColor" class="size-[1.5rem]">

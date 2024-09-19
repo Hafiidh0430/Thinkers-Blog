@@ -27,7 +27,7 @@
                     <a href="{{ route('pages.index') }}" class="title text-3xl font-bold">Thinkers.</a>
                     <div class="nav_options flex items-center relative gap-4">
                         <span
-                            class="{{ request()->routeIs(['pages.profile', 'pages.post', 'pages.profile.about']) ? 'hidden' : 'block' }}">
+                            class="{{ request()->routeIs(['pages.profile', 'pages.post', 'pages.profile.index']) ? 'hidden' : 'block' }}">
                             <x-search :value="$search_value" /></span>
                         <div class="nav_user flex items-center gap-4 ">
                             @if (Auth::check())
@@ -61,8 +61,8 @@
                                             </svg>
                                             <p class="text-[.9rem]">Create</p>
                                         </a>
-                                        <a href="{{ route('pages.profile.about') }}"
-                                            class="user_profile cursor-pointer {{ request()->routeIs('pages.profile.about') ? 'text-slate-950' : 'text-slate-500' }}  hover:text-slate-950 flex items-center gap-3">
+                                        <a href="{{ route('pages.profile.index') }}"
+                                            class="user_profile cursor-pointer {{ request()->routeIs('pages.profile.index') ? 'text-slate-950' : 'text-slate-500' }}  hover:text-slate-950 flex items-center gap-3">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1" stroke="currentColor" class="size-[1.5rem]">
                                                 <path stroke-linecap="round" stroke-linejoin="round"

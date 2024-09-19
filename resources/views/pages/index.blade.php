@@ -1,5 +1,5 @@
 <x-layout :search_value="$search_value">
-    <section class="container_content_index grid max-md:grid-cols-1 grid-cols-[3fr,.1fr,2fr]">
+    <section class="container_content_index px-16 lg:px-24 max-md:max-sm:px-0 grid max-md:grid-cols-1 grid-cols-[3.5fr,.1fr,2fr]">
         <div class="container_blog w-full max-md:pr-0 pr-10 flex-col pt-8 gap-10 flex justify-between items-center">
             <div class="blog_category_index flex items-baseline w-full gap-6 text-sm">
                 <a class="text-xl pb-4" href="">+</a>
@@ -120,7 +120,7 @@
         <span class="max-md:hidden h-full w-[1px] bg-slate-200 block"></span>
 
         <div class="blog_section max-md:hidden pl-4 flex pt-8 flex-col gap-8">
-            <h5 class="font-semibold text-lg">Thinkers picks</h5>
+            <h5 class="font-semibold text-lg">Tweets picks</h5>
             @forelse ($posts->filter(fn($blog) => $blog->image == null) as $blog)
                 <a href="{{ route('pages.post', ['id' => $blog->id_post]) }}" class="blog_left">
                     <div class="blog_card flex flex-col gap-3">
@@ -137,7 +137,6 @@
                 <h1>Empty Thinker!</h1>
             @endforelse
         </div>
-
     </section>
     <script>
         const options_blog = document.querySelectorAll(".options_blog");

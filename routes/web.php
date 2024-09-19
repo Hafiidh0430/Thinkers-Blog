@@ -22,10 +22,11 @@ Route::prefix('/')->middleware('auth')->group(function () {
     //stories
     Route::get('/stories', [StoriesController::class, 'index'])->name('pages.stories');
     Route::get('/stories/drafts', [StoriesController::class, 'draftsStories'])->name('pages.stories.drafts');
-
+    
     //profile
-    Route::get('/profile', [ProfileController::class, 'about'])->name('pages.profile.about');
-    Route::get('/profile/stories', [ProfileController::class, 'index'])->name('pages.profile');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('pages.profile.index');
+    Route::get('/profile/likes', [ProfileController::class, 'likesActivity'])->name('pages.profile.likes');
+    Route::get('/profile/comments', [ProfileController::class, 'commentsActivity'])->name('pages.profile.comments');
 });
 
 Route::prefix('/')->group(function () {

@@ -8,11 +8,14 @@ use Illuminate\Http\Request;
 class ProfileController extends Controller
 {
     public function index () {
-        $stories = Post::where('username', auth()->user()->username)->get();
-        return view('pages.profile.profile-post')->with(['stories' => $stories]);
+        $stories = Post::where('username', auth()->user()->username)->limit(2)->get();
+        return view('pages.profile.activity-reposted')->with(['stories' => $stories]);
     }
-    public function about () {
-        $stories = Post::where('username', auth()->user()->username)->get();
-        return view('pages.profile.profile-about')->with(['stories' => $stories]);
+
+    public function likesActivity() {
+        return view('pages.profile.activity-likes');
+    }
+    public function commentsActivity() {
+        return view('pages.profile.activity-comments');
     }
 }

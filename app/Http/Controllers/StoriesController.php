@@ -17,4 +17,8 @@ class StoriesController extends Controller
     {
         return view('pages.stories.stories-draft');
     }
+    public function apiStories() 
+    {
+        return response()->json(Post::all());
+    }
 }
