@@ -15,8 +15,6 @@ return new class extends Migration
         Schema::create('category', function (Blueprint $table){
              $table->id('id_category');
              $table->string('category')->unique();
-             $table->timestamp('create_at')->default(now());
-         
         });
     }
 

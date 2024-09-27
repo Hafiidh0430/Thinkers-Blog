@@ -25,7 +25,7 @@ class ResgisterController extends Controller
     {
         $request->validated();
         if($request->password !== $request->confirm_password) {
-            return to_route('register')->withErrors(['error' => 'Invalid password!']);
+            return to_route('register')->with(['error' => 'Invalid password!']);
         }
 
         $create_aacount = DB::table('user')->insert([

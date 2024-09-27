@@ -1,4 +1,4 @@
-<x-layout-post :action="route('pages.create.addStore')" :method="'POST'">
+<x-layout-post :action="route('pages.create.addStore')" :category="$category" :method="'POST'">
     <div class="flex gap-4 flex-col max-md:px-12 px-24 mt-8">
         @csrf
         <input type="file" name="image" id="">
@@ -12,7 +12,7 @@
             </div>
         @enderror
         <textarea
-            class="px-4 py-2 text-3xl {{ $errors->has('description') ? 'border-b-red-600' : ' border-b-slate-300' }} outline-none  bg-transparent border-b"
+            class="description_input px-4 py-2 min-h-[16rem] text-3xl {{ $errors->has('description') ? 'border-b-red-600' : ' border-b-slate-300' }} outline-none  bg-transparent border-b"
             name="description" placeholder="Tell tour story">{{ old('description') }}</textarea>
         @error('description')
             <div class="error flex items-center text-red-600 gap-2">

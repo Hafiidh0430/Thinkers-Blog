@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
         Schema::create('post_category', function (Blueprint $table) {
+            $table->id('post_category_id');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('post_id');
+
             $table->foreign('category_id')->references('id_category')->on('category')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('post_id')->references('id_post')->on('post')->onDelete('cascade')->onUpdate('cascade');
         });
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+      Schema::dropIfExists('post_category');
     }
 };

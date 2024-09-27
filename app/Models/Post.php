@@ -9,11 +9,18 @@ class Post extends Model
 {
     use HasFactory;
     protected $table = 'post';
-    protected $primaryKey = 'id';
-    protected $fillable = ['image', 'title', 'description', 'username'];
+    protected $primaryKey = 'id_post';
+    protected $fillable = ['image', 'title', 'user_id', 'description', 'username'];
 
-    // public function user()
-    // {
-    //     return $this->belongsTo(User::class, ['id_user', 'id']);
-    // }
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'post_category', 'post_id', 'category_id');
+    }
+
+   
 }

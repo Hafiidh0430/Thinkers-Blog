@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
+use App\Models\PostCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -12,16 +14,22 @@ class PostController extends Controller
     {
         $search = $request->input('search');
         if ($search) {
-            $post = Post::whereRaw("title LIKE? OR description LIKE?", ["%{$search}%", "%{$search}%"])->get();
+            $post = Post::with('author')->whereRaw("title LIKE? OR description LIKE?", ["%{$search}%", "%{$search}%"])->get();
         } else {
-            $post = Post::get();
+            $post = Post::with('author')->get();
         }
+
+        // $postCategories = PostCategory::whereHas(['post', 'category], function ($query) use ($search) {
+        //      $query->whereRaw("title LIKE? OR description LIKE?", ["%{$search}%", "%{$search}%"])->get();
+        // });
+
         return view('pages.index', ['posts' => $post, 'search_value' => $search]);
     }
 
     public function add()
     {
-        return view('pages.create');
+        $category = Category::all();
+        return view('pages.create')->with(['category' => $category]);
     }
 
     public function addStore(Request $request)
@@ -30,13 +38,14 @@ class PostController extends Controller
             'image' => 'nullable|file|image|mimes:jpg,jpeg,png,webp|max:8192',
             'title' => 'required|string',
             'description' => 'required|string',
+            'input_category' => 'required|string'
         ]);
 
         $data = [
-            'username' => auth()->user()->username,
+            'user_id' => auth()->user()->id_user,
             'title' => $request->title,
             'description' => $request->description,
-            'created_at' => now(), // Atur tanggal secara manual
+            'created_at' => now(),
             'updated_at' => now()
         ];
 
@@ -47,14 +56,16 @@ class PostController extends Controller
             $data['image'] = $filename;
         };
 
-        $post = Post::insert($data);
+        $post = Post::create($data);
+        $categoryIds = Category::whereIn('category', [$request->input_category])->pluck('id_category');
+        $post->categories()->attach($categoryIds);
         if ($post) {
             return redirect()->route('pages.index');
         }
     }
     public function update($id)
     {
-        $post = Post::where('id_post', $id)->first();
+        $post = Post::query()->findOrFail($id);
         return view('pages.update', ['old' => $post]);
     }
     public function updateStore(Request $request, $id)
@@ -66,14 +77,12 @@ class PostController extends Controller
         ]);
 
         $data = [
-            'username' => auth()->user()->username,
+            'user_id' => auth()->user()->id_user,
             'title' => $request->title,
             'description' => $request->description,
-            'created_at' => now(),
-            'updated_at' => now()
         ];
 
-        $old_image = Post::where('id_post', $id)->first()->image;
+        $old_image = Post::query()->find($id)->image;
         $image_path = public_path('/assets/image/' . $old_image);
 
         if (File::exists($image_path)) {
@@ -86,7 +95,7 @@ class PostController extends Controller
             };
         }
 
-        $update = Post::where('id_post', $id)->update($data);
+        $update = Post::query()->findOrFail($id)->update($data);
         if ($update) {
             return redirect()->route('pages.stories');
         }

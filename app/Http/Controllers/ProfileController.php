@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ProfileController extends Controller
 {
     public function index () {
-        $stories = Post::where('username', auth()->user()->username)->limit(2)->get();
+        $stories = Post::with('author')->where('user_id', auth()->user()->id_user)->limit(2)->get();
         return view('pages.profile.activity-reposted')->with(['stories' => $stories]);
     }
 

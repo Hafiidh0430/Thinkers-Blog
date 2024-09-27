@@ -1,6 +1,6 @@
 <x-layout :search_value="$search_value">
-    <section class="container_content_index px-16 lg:px-24 max-md:max-sm:px-0 grid max-md:grid-cols-1 grid-cols-[3.5fr,.1fr,2fr]">
-        <div class="container_blog w-full max-md:pr-0 pr-10 flex-col pt-8 gap-10 flex justify-between items-center">
+    <section class="container_content_index h-dvh px-16 lg:px-24 max-md:max-sm:px-0 grid max-md:grid-cols-1 grid-cols-[3.5fr,.1fr,2fr]">
+        <div class="container_blog w-full max-md:pr-0 pr-10 flex-col pt-8 gap-10 flex">
             <div class="blog_category_index flex items-baseline w-full gap-6 text-sm">
                 <a class="text-xl pb-4" href="">+</a>
                 <a class="hover:border-b-[.1rem] pb-4 border-b-[.1rem] border-black" href="">For you</a>
@@ -9,12 +9,12 @@
                 <a class="hover:border-b-[.1rem] pb-4 border-black" href="">Productivity</a>
                 <a class="hover:border-b-[.1rem] pb-4 border-black" href="">Family</a>
             </div>
-            <div class="blog_section flex flex-col gap-6">
+            <div class="blog_section flex pb-8 flex-col gap-6">
                 @forelse ($posts as $blog)
                     <div class="blog_card flex flex-col gap-4">
                         <div class="user_card flex items-center gap-[.6rem]">
                             <div class="user_profile h-[1.8rem] rounded-full w-[1.8rem] bg-neutral-600"></div>
-                            <h5 class="user_username inline-flex gap-3 items-center">{{ $blog->username }} <a
+                            <h5 class="user_username inline-flex gap-3 items-center">{{ $blog->author->username }} <a
                                     class="bg-slate-100 font-medium text-slate-700 rounded-full text-sm px-4 pt-[.3rem] pb-[.34rem]"
                                     href="">Follow</a></h5>
                         </div>
@@ -130,11 +130,14 @@
                         </div>
                         <div class="flex flex-col gap-2">
                             <h3 class="blog_title text-xl font-extrabold">{{ $blog->title }}</h3>
+                            <p class="blog_bext-sm text-gray-500">
+                                {{ Str::limit($blog->description, 100) }}
+                            </p>
                         </div>
                     </div>
                 </a>
             @empty
-                <h1>Empty Thinker!</h1>
+                <h1>Empty Tweets!</h1>
             @endforelse
         </div>
     </section>

@@ -6,7 +6,7 @@
                     <div class="user_card flex items-center justify-between ">
                         <div class="flex items-center gap-[.6rem]">
                             <div class="user_profile h-[1.4rem] rounded-full w-[1.4rem] bg-neutral-600"></div>
-                            <h5 class="user_username text-sm inline-flex gap-3 items-center">{{ $blog->username }}
+                            <h5 class="user_username text-sm inline-flex gap-3 items-center">{{ $blog->author->username }}
                                 <a class="bg-slate-100 font-medium text-slate-700 rounded-full text-[.8rem] px-3 pt-[.3rem] pb-[.2rem]"
                                     href="">Follow</a>
                             </h5>

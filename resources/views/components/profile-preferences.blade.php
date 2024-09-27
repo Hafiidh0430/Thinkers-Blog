@@ -3,7 +3,7 @@
 ])
 
 <x-layout>
-    <div class="container_profile px-16 lg:px-24 max-md:max-sm:px-0 gap-8 max-md:grid-cols-1 grid grid-cols-[3fr,2fr]">
+    <div class="container_profile h-dvh px-16 lg:px-24 max-md:max-sm:px-0 gap-8 max-md:grid-cols-1 grid grid-cols-[3fr,2fr]">
         <div class="profile_about pt-8 pr-8 max-md:border-none max-md:pr-0 border-r">
             <header class="profile_header flex justify-between">
                 <div class="gap-6 flex items-center w-full">
@@ -45,7 +45,7 @@
                     </div>
                 </div>
             </header>
-            <div class="container_profile_about border-t mt-6 pt-6 flex flex-col gap-5">
+            <div class="container_profile_about mt-6 pt-6 flex flex-col gap-5">
                 <section class="connection-section flex items-center gap-2">
                     <p class="px-4 py-[.45rem] font-medium bg-slate-200 rounded-full text-sm">329 Stories</p>
                     <p class="px-4 py-[.45rem] font-medium bg-slate-200 rounded-full text-sm">12.489 Followers</p>

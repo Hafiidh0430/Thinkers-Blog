@@ -14,7 +14,7 @@
         <div
             class="wrapper-login  h-fit rounded-[1rem] bg-white-300 bg-clip-padding backdrop-filter bg-slate-100 backdrop-blur-md bg-opacity-60 ">
             <div class="img_login flex items-center lg:h-full w-full gap-16 p-10">
-                <div class="hero_section md:hidden max-sm:hidden lg:flex flex-col h-full">
+                <div class="hero_section max-sm:max-md:hidden lg:flex flex-col h-full">
 
                     <img class="img_hero relative object-cover rounded-[1rem] w-[32rem] h-full"
                         src="https://64.media.tumblr.com/50735235ae8cd5f523886b93ab860d78/tumblr_o1end2TuQa1v1wfzlo1_500.gif"

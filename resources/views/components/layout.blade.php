@@ -20,19 +20,19 @@
     @props([
         'search_value' => '',
     ])
-    <div class="container-blog px-12 py-8 lg:px-16">
+    <div class="container-blog px-12 pt-8  lg:px-16">
         <div class="wrapper">
             <header>
                 <nav class="flex justify-between items-center">
                     <a href="{{ route('pages.index') }}" class="title text-3xl font-bold">Thinkers.</a>
                     <div class="nav_options flex items-center relative gap-4">
                         <span
-                            class="{{ request()->routeIs(['pages.profile', 'pages.post', 'pages.profile.index']) ? 'hidden' : 'block' }}">
+                            class="{{ request()->routeIs(['pages.profile', 'pages.post', 'pages.profile.index', 'pages.stories', 'pages.stories.drafts']) ? 'hidden' : 'block' }}">
                             <x-search :value="$search_value" /></span>
                         <div class="nav_user flex items-center gap-4 ">
                             @if (Auth::check())
                                 <a href="{{ route('pages.create') }}"
-                                    class="type_blog max-md:hidden inline-flex items-center gap-2 text-sm">
+                                    class="type_blog max-md:hidden {{ request()->routeIs(['pages.stories', 'pages.stories.drafts']) ? 'hidden' : 'block' }}  inline-flex items-center gap-2 text-sm">
                                     <svg class="size-4 text-gray-800 dark:text-white" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"

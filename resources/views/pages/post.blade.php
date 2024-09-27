@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="flex flex-col mt-8 max-md:px-[3rem] md:px-[5rem] xl:lg:px-[10rem] gap-6 w-full items-start container-post">
+    <div class="flex flex-col mt-8 max-sm:max-md:px-0 px-[4rem] xl:lg:px-[10rem] gap-6 w-full items-start container-post">
         <h1 class="text-[2.8rem] max-md:text-[2.5rem] leading-tight font-extrabold">{{ $post->title }}</h1>
         <div class="author flex items-center gap-4">
             <img class="h-[2.8rem] rounded-full w-[2.8rem] bg-slate-400" src="" alt="">

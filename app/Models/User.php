@@ -15,11 +15,11 @@ class User extends Model implements AuthenticatableContract
     use Authenticatable;
 
     protected $table = 'user';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'id_user';
     protected $fillable = ['username', 'password'];
 
-    // public function userPost()
-    // {
-    //     return $this->hasMany(Post::class, ['id_user', 'id']);
-    // }
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'user_id');
+    }
 }
