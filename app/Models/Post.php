@@ -11,7 +11,7 @@ class Post extends Model
     protected $table = 'post';
     protected $primaryKey = 'id_post';
     protected $fillable = ['image', 'title', 'user_id', 'description', 'username'];
-
+    public $timestamps = true;
     public function author()
     {
         return $this->belongsTo(User::class, 'user_id');
@@ -20,7 +20,5 @@ class Post extends Model
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'post_category', 'post_id', 'category_id');
-    }
-
-   
+    }  
 }

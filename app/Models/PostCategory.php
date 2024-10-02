@@ -11,6 +11,7 @@ class PostCategory extends Model
     protected $table = 'post_category';
     protected $primaryKey = 'post_category_id';
     protected $fillable = ['category_id', 'post_id'];
+    public $timestamps = true;
 
     public function post()
     {

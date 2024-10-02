@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css', 'resources/js/app.js')
-    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script> --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,7 +96,6 @@
                     </div>
                 </nav>
             </header>
-
             <div
                 class="modal_preview_container hidden py-16 px-24 lg:py-20 lg:px-32 bg-white absolute h-full w-full left-[50%] top-[50%] -translate-x-1/2 -translate-y-1/2">
                 <div

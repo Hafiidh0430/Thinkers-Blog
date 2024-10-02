@@ -9,8 +9,8 @@ class StoriesController extends Controller
 {
     public function index()
     {
-        $post = DB::table('post')->get();
-        return view('pages.stories', ['post' => $post]);
+        $post = Post::with(['author'])->get();
+        return view('pages.stories.stories', ['posts' => $post]);
     }
 
     public function draftsStories() 

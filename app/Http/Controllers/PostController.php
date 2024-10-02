@@ -14,14 +14,14 @@ class PostController extends Controller
     {
         $search = $request->input('search');
         if ($search) {
+            // $postSearch = PostCategory::query()->whereHas('post', function ($query) use ($search) {
+            //     $query->whereRaw("title LIKE? OR description LIKE?", ["%{$search}%", "%{$search}%"]);
+            // })->get();
+            // dd($postSearch);
             $post = Post::with('author')->whereRaw("title LIKE? OR description LIKE?", ["%{$search}%", "%{$search}%"])->get();
         } else {
             $post = Post::with('author')->get();
         }
-
-        // $postCategories = PostCategory::whereHas(['post', 'category], function ($query) use ($search) {
-        //      $query->whereRaw("title LIKE? OR description LIKE?", ["%{$search}%", "%{$search}%"])->get();
-        // });
 
         return view('pages.index', ['posts' => $post, 'search_value' => $search]);
     }
@@ -45,8 +45,6 @@ class PostController extends Controller
             'user_id' => auth()->user()->id_user,
             'title' => $request->title,
             'description' => $request->description,
-            'created_at' => now(),
-            'updated_at' => now()
         ];
 
         if ($request->hasFile('image')) {
@@ -57,8 +55,8 @@ class PostController extends Controller
         };
 
         $post = Post::create($data);
-        $categoryIds = Category::whereIn('category', [$request->input_category])->pluck('id_category');
-        $post->categories()->attach($categoryIds);
+        $category_id = Category::whereIn('category', [$request->input_category])->pluck('id_category');
+        $post->categories()->sync($category_id);
         if ($post) {
             return redirect()->route('pages.index');
         }
@@ -66,7 +64,8 @@ class PostController extends Controller
     public function update($id)
     {
         $post = Post::query()->findOrFail($id);
-        return view('pages.update', ['old' => $post]);
+        $category = Category::all();
+        return view('pages.update', ['old' => $post, 'category' => $category]);
     }
     public function updateStore(Request $request, $id)
     {
@@ -82,7 +81,7 @@ class PostController extends Controller
             'description' => $request->description,
         ];
 
-        $old_image = Post::query()->find($id)->image;
+        $old_image = Post::findOrFail($id)->image;
         $image_path = public_path('/assets/image/' . $old_image);
 
         if (File::exists($image_path)) {
@@ -95,10 +94,12 @@ class PostController extends Controller
             };
         }
 
-        $update = Post::query()->findOrFail($id)->update($data);
-        if ($update) {
-            return redirect()->route('pages.stories');
-        }
+
+        $category_id = Category::whereIn('category', [$request->input_category])->pluck('id_category');
+        PostCategory::query()->findOrFail($id)->update(['category_id' => $category_id]);
+        Post::query()->findOrFail($id)->update($data);
+
+        return redirect()->route('pages.stories');
     }
 
     public function deleteStore($id)
@@ -109,7 +110,7 @@ class PostController extends Controller
 
     public function post($id)
     {
-        $post = Post::where('id_post', $id)->first();
+        $post = Post::with(['author'])->where('id_post', $id)->first();
         return view('pages.post', ['post' => $post]);
     }
 }

@@ -1,4 +1,4 @@
-<x-layout-post :btn_text="'Update'" :action="route('pages.updateStore', ['id' => $old->id_post])" :method="'POST'">
+<x-layout-post btn_text="Update" :category="$category" :action="route('pages.updateStore', ['id' => $old->id_post])" :method="'POST'">
     <div class="flex gap-4 flex-col px-24 mt-16">
         @csrf
         @method('PATCH')

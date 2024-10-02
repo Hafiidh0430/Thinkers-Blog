@@ -22,7 +22,8 @@
                     </li>
                 </ul>
                 <form class="max-w-sm flex items-center gap-3">
-                    <label for="countries" class="block font-semibold text-sm text-gray-900 dark:text-white">Type:</label>
+                    <label for="countries"
+                        class="block font-semibold text-sm text-gray-900 dark:text-white">Type:</label>
                     <select id="countries"
                         class=" border border-gray-300 text-gray-900 text-sm rounded-lg p-2 outline-none focus:border-blue-600">
                         <option selected>All types</option>
